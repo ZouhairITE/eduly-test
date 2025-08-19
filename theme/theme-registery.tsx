@@ -59,6 +59,12 @@ export default function ThemeRegistry({ children }: { children: ReactNode }) {
                         ? { background: { default: "#fafafa" } }
                         : { background: { default: "#121212" } }),
                 },
+                typography: {
+                    fontFamily:
+                        lang === "ar"
+                            ? "var(--font-almarai), sans-serif"
+                            : "var(--font-geist), sans-serif",
+                },
             }),
         [mode]
     );

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Almarai } from "next/font/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 
 import "./globals.css";
@@ -7,8 +7,13 @@ import ThemeRegistry from "../../theme/theme-registery";
 import ResponsiveAppBar from "./components/layout/main-app-bar";
 
 const geistSans = Geist({
-    variable: "--font-geist-sans",
+    variable: "--font-geist",
     subsets: ["latin"],
+});
+
+const almaraiSans = Almarai({
+    variable: "--font-almarai",
+    weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -28,7 +33,7 @@ export default async function RootLayout({
 
     return (
         <html lang={lang} dir={dir}>
-            <body className={`${geistSans.variable}`}>
+            <body className={`${geistSans.variable} ${almaraiSans.variable}`}>
                 <AppRouterCacheProvider>
                     <ThemeRegistry>
                         <ResponsiveAppBar />
