@@ -6,9 +6,12 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import Avatar from "@mui/material/Avatar";
 import MenuItem from "@mui/material/MenuItem";
+import { useTranslation } from "../../shared/hooks/use-translation";
 
 export function ProfileMenu() {
-    const settings = ["Profile", "Settings", "Logout"];
+    const t = useTranslation();
+    const settings = [t("Profile"), t("Settings"), t("Logout")];
+
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
     const handleOpenUserMenu = (event: MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);

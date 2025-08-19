@@ -1,10 +1,13 @@
-import "server-only";
 import type { Locale } from "./i18n-config";
+import en from "./dictionaries/en.json";
+import ar from "./dictionaries/ar.json";
 
-const dictionaries = {
-  en: () => import("./dictionaries/en.json").then((module) => module.default),
-  ar: () => import("./dictionaries/ar.json").then((module) => module.default),
+const dictionaries: Record<string, Record<string, string>> = {
+    en,
+    ar,
 };
 
-export const getDictionary = async (locale: Locale) =>
-  dictionaries[locale]?.() ?? dictionaries.en();
+export type TranslationKey = keyof typeof en;
+
+export const getDictionary = (locale: Locale) =>
+    dictionaries[locale] ?? dictionaries.en;

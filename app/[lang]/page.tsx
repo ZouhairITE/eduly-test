@@ -4,8 +4,10 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import NextLink from "next/link";
+import { useServerTranslation } from "./helpers/i18n-helpers";
 
-export default function Home() {
+export default async function Home() {
+    const t = await useServerTranslation();
     return (
         <Container maxWidth="lg">
             <Box
@@ -18,7 +20,7 @@ export default function Home() {
                 }}
             >
                 <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
-                    Material UI - Next.js App Router example in TypeScript
+                    {t("Settings")}
                 </Typography>
                 <Link href="/about" color="secondary" component={NextLink}>
                     Go to the about page

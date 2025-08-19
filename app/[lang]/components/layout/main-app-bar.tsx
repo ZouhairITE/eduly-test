@@ -20,11 +20,13 @@ function MainAppBar() {
                             display: "flex",
                             alignItems: "center",
                             flexGrow: 1,
+                            gap: 1,
                         }}
                     >
                         <MobileMenu />
                         <Link href="/">
                             <Image
+                                style={{ verticalAlign: "middle" }}
                                 src="/eduly-logo.png"
                                 alt="Eduly logo"
                                 height={38}

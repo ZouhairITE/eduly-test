@@ -1,3 +1,6 @@
 {
-    "locale":"locale"
+    "locale": "locale",
+    "Profile": "Profile",
+    "Settings": "Settings",
+    "Logout": "Logout"
 }

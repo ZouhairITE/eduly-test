@@ -1,14 +1,9 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-
-import { Locale, i18n } from "./i18n-config";
-
+import { i18n } from "./i18n-config";
 import { match as matchLocale } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
-
-function isLocale(value: string): value is Locale {
-    return (i18n.locales as readonly string[]).includes(value);
-}
+import { isLocale } from "./app/[lang]/helpers/i18n-helpers";
 
 function getLocale(request: NextRequest): string | undefined {
     const cookieLocale = request.cookies.get("NEXT_LOCALE")?.value;
