@@ -8,6 +8,7 @@ import { useServerTranslation } from "./helpers/i18n-helpers";
 
 export default async function Home() {
     const t = await useServerTranslation();
+
     return (
         <Container maxWidth="lg">
             <Box
