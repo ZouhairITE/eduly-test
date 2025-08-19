@@ -1,0 +1,16 @@
+// types/exam.ts
+import { z } from "zod";
+
+export const ExamSchema = z.object({
+    id: z.string(),
+    title: z.string(),
+    subject: z.string(),
+    dateTimeISO: z.string().datetime(),
+    totalStudents: z.number().int().nonnegative(),
+    totalQuestions: z.number().int().positive(),
+    // Useful KPIs for the left-side cards/charts
+    percentCompleted: z.number().min(0).max(100),
+    averageScore: z.number().min(0).max(100),
+});
+
+export type ExamDTO = z.infer<typeof ExamSchema>;
