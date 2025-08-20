@@ -2,7 +2,6 @@
 
 import { useThemeToggle } from "@/src/theme/theme-registery";
 import ContrastIcon from "@mui/icons-material/Contrast";
-import SunnyIcon from "@mui/icons-material/Sunny";
 import IconButton from "@mui/material/IconButton";
 
 export default function ThemeSwitcher() {
