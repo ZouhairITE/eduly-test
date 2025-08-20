@@ -2,7 +2,8 @@
     "editor.formatOnSave": true,
     "prettier.tabWidth": 4,
     "i18n-ally.localesPaths": [
-        "D:/Eduly/eduly-dashboard/dictionaries"
+        "D:/Eduly/eduly-dashboard/dictionaries",
+        "D:/Eduly/eduly-dashboard/src/dictionaries"
     ],
     "i18n-ally.dirStructure": "auto",
     "i18n-ally.enabledFrameworks": [
