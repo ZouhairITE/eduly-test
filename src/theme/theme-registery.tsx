@@ -84,7 +84,7 @@ export default function ThemeRegistry({ children }: { children: ReactNode }) {
                             : "var(--font-geist), sans-serif",
                 },
             }),
-        [mode]
+        [mode, direction, lang]
     );
 
     return (

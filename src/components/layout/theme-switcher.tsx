@@ -1,7 +1,7 @@
 "use client";
 
 import { useThemeToggle } from "@/src/theme/theme-registery";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
+import ContrastIcon from "@mui/icons-material/Contrast";
 import SunnyIcon from "@mui/icons-material/Sunny";
 import IconButton from "@mui/material/IconButton";
 
@@ -14,7 +14,7 @@ export default function ThemeSwitcher() {
             color="inherit"
             onClick={() => setMode(mode === "light" ? "dark" : "light")}
         >
-            {mode === "dark" ? <SunnyIcon /> : <DarkModeIcon />}
+            <ContrastIcon />
         </IconButton>
     );
 }

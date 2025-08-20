@@ -1,14 +1,17 @@
 import "@testing-library/jest-dom";
 
+import { ComponentType } from "react";
+
 import { render, screen } from "@testing-library/react";
 
 import LineChart from "../components/dashboard/charts/line-chart";
 
-jest.mock("next/dynamic", () => (fn: any) => {
-    const Component = fn();
-    return (props: any) => (
+jest.mock("next/dynamic", () => () => {
+    const Mock: ComponentType<Record<string, unknown>> = (props) => (
         <div data-testid="chart">{JSON.stringify(props)}</div>
     );
+    Mock.displayName = "MockDynamicComponent"; // fixes display-name warning
+    return Mock;
 });
 
 jest.mock("../shared-fe/hooks/use-translation", () => ({
@@ -19,14 +22,11 @@ describe("LineChart", () => {
     it("renders chart with data", () => {
         render(<LineChart averageScore={75} />);
 
-        // Check if chart container exists
         const chart = screen.getByTestId("chart");
         expect(chart).toBeInTheDocument();
 
-        // Check if the series contains the correct score
         expect(chart).toHaveTextContent("75");
 
-        // Check if title renders
         expect(screen.getByText("AverageScoreOverTime")).toBeInTheDocument();
     });
 

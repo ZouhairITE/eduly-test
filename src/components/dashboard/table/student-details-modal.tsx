@@ -20,7 +20,7 @@ import Typography from "@mui/material/Typography";
 interface StudentDetailsModalProps {
     open: boolean;
     onClose: () => void;
-    student: StudentDTO | null;
+    student: StudentDTO;
 }
 
 export default function StudentDetailsModal({
@@ -30,8 +30,6 @@ export default function StudentDetailsModal({
 }: StudentDetailsModalProps) {
     const theme = useTheme();
     const t = useTranslation();
-
-    if (!student) return null;
 
     const studentStats = useMemo(
         () => [

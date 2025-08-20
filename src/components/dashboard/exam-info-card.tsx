@@ -1,5 +1,5 @@
 import { MARKS_PER_QUESTION, TOTAL_QUESTIONS } from "@/src/lib/app-consts";
-import { useServerTranslation } from "@/src/lib/i18n/i18n-helpers";
+import { dispatchServerTranslation } from "@/src/lib/i18n/i18n-helpers";
 import { getExam } from "@/src/services/mock-data";
 import { Assignment } from "@mui/icons-material";
 import Avatar from "@mui/material/Avatar";
@@ -12,7 +12,7 @@ import Typography from "@mui/material/Typography";
 
 export default async function ExamInfoCard() {
     const exam = await getExam();
-    const t = await useServerTranslation();
+    const t = await dispatchServerTranslation();
 
     const stats = [
         {

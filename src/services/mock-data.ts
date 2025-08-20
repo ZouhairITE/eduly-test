@@ -19,7 +19,7 @@ function clamp(v: number, min: number, max: number) {
     return Math.min(max, Math.max(min, v));
 }
 
-let students: StudentDTO[] = studentNames.map((name, idx) => ({
+const students: StudentDTO[] = studentNames.map((name, idx) => ({
     id: `stu-${idx + 1}`,
     name,
     totalQuestions: TOTAL_QUESTIONS,

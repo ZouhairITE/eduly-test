@@ -46,11 +46,11 @@ export function getLocaleFromRequest(request: NextRequest): string | undefined {
     const negotiatorHeaders: Record<string, string> = {};
     request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
 
-    // @ts-ignore locales are readonly
-    let locales: string[] = i18n.locales;
+    const locales = i18n.locales;
 
-    let languages = new Negotiator({ headers: negotiatorHeaders }).languages(
-        locales
+    const languages = new Negotiator({ headers: negotiatorHeaders }).languages(
+        // necessary because the function accepts string only
+        locales as unknown as string[]
     );
 
     const locale = matchLocale(languages, locales, i18n.defaultLocale);
@@ -58,7 +58,7 @@ export function getLocaleFromRequest(request: NextRequest): string | undefined {
     return locale;
 }
 
-export async function useServerTranslation() {
+export async function dispatchServerTranslation() {
     const lang = await getLocale();
 
     const dict = getDictionary(lang);

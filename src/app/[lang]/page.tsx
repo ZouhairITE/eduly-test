@@ -3,14 +3,15 @@ import NextLink from "next/link";
 import * as React from "react";
 
 import { META } from "@/src/lib/app-consts";
-import { useServerTranslation } from "@/src/lib/i18n/i18n-helpers";
+import { Locale } from "@/src/lib/i18n/i18n-config";
+import { dispatchServerTranslation } from "@/src/lib/i18n/i18n-helpers";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 
 export default async function Home() {
-    const t = await useServerTranslation();
+    const t = await dispatchServerTranslation();
 
     return (
         <Container maxWidth="md">
@@ -69,12 +70,19 @@ export default async function Home() {
     );
 }
 
-export function generateMetadata({
+import type { Metadata } from "next";
+interface PageProps {
+    params: Promise<{
+        lang: Locale;
+    }>;
+}
+
+export async function generateMetadata({
     params,
-}: {
-    params: { lang: "en" | "ar" };
-}) {
-    const meta = META[params.lang];
+}: PageProps): Promise<Metadata> {
+    const { lang } = await params;
+    const meta = META[lang];
+
     return {
         title: meta.title,
         description: meta.description,

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { useServerTranslation } from "@/src/lib/i18n/i18n-helpers";
+import { dispatchServerTranslation } from "@/src/lib/i18n/i18n-helpers";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -14,7 +14,7 @@ import { ProfileMenu } from "./profile-menu";
 import ThemeSwitcher from "./theme-switcher";
 
 async function MainAppBar() {
-    const t = await useServerTranslation();
+    const t = await dispatchServerTranslation();
     return (
         <AppBar
             sx={{ borderRadius: "0 0 16px 16px" }}
