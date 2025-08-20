@@ -2,6 +2,7 @@ import Image from "next/image";
 import NextLink from "next/link";
 import * as React from "react";
 
+import { META } from "@/src/lib/app-consts";
 import { useServerTranslation } from "@/src/lib/i18n/i18n-helpers";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -66,4 +67,25 @@ export default async function Home() {
             </Box>
         </Container>
     );
+}
+
+export function generateMetadata({
+    params,
+}: {
+    params: { lang: "en" | "ar" };
+}) {
+    const meta = META[params.lang];
+    return {
+        title: meta.title,
+        description: meta.description,
+        openGraph: {
+            title: meta.title,
+            description: meta.description,
+            url: meta.url,
+            images: [
+                { url: meta.image, width: 1200, height: 630, alt: meta.title },
+            ],
+            type: "website",
+        },
+    };
 }
