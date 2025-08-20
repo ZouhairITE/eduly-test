@@ -27,7 +27,7 @@ let students: StudentDTO[] = studentNames.slice(0, 7).map((name, idx) => ({
     completedQuestions: 0,
     avgTimeSec: 0,
     score: 0,
-    status: "Not Started",
+    status: "NotStarted",
 }));
 
 let exam: ExamDTO = {
@@ -72,7 +72,7 @@ export function tickStudentsProgress() {
         // Start students if not started
         let completed = s.completedQuestions;
         let status = s.status;
-        if (status === "Not Started") status = "In Progress";
+        if (status === "NotStarted") status = "InProgress";
 
         // Advance by 1–3 questions
         const step = Math.max(1, Math.ceil(Math.random() * 3));

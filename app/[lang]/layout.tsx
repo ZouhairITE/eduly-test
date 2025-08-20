@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Almarai } from "next/font/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
-
 import "./globals.css";
 import ThemeRegistry from "../../theme/theme-registery";
-import ResponsiveAppBar from "./components/layout/main-app-bar";
+import MainAppBar from "./components/layout/main-app-bar";
 
 const geistSans = Geist({
     variable: "--font-geist",
@@ -36,7 +35,7 @@ export default async function RootLayout({
             <body className={`${geistSans.variable} ${almaraiSans.variable}`}>
                 <AppRouterCacheProvider>
                     <ThemeRegistry>
-                        <ResponsiveAppBar />
+                        <MainAppBar />
                         <main style={{ marginTop: "64px", padding: "1rem" }}>
                             {children}
                         </main>

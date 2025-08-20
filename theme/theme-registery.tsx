@@ -3,9 +3,19 @@
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 import { useParams } from "next/navigation";
 import { ReactNode, useMemo, useState, useEffect } from "react";
+import { CacheProvider } from "@emotion/react";
+import createCache from "@emotion/cache";
+import { prefixer } from "stylis";
+import rtlPlugin from "@mui/stylis-plugin-rtl";
+import { createContext, useContext } from "react";
+
+// Create rtl cache
+const rtlCache = createCache({
+    key: "muirtl",
+    stylisPlugins: [prefixer, rtlPlugin],
+});
 
 // Create context
-import { createContext, useContext } from "react";
 const ThemeToggleContext = createContext<{
     mode: "light" | "dark";
     setMode: (mode: "light" | "dark") => void;
@@ -73,7 +83,11 @@ export default function ThemeRegistry({ children }: { children: ReactNode }) {
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <ThemeToggleContext.Provider value={{ mode, setMode }}>
-                {children}
+                {lang === "ar" ? (
+                    <CacheProvider value={rtlCache}>{children}</CacheProvider>
+                ) : (
+                    children
+                )}
             </ThemeToggleContext.Provider>
         </ThemeProvider>
     );

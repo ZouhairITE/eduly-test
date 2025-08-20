@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import Avatar from "@mui/material/Avatar";
 import MenuItem from "@mui/material/MenuItem";
-import { useTranslation } from "../../shared/hooks/use-translation";
+import { useTranslation } from "../../shared-fe/hooks/use-translation";
 
 export function ProfileMenu() {
     const t = useTranslation();

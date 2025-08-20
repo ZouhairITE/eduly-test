@@ -1,6 +1,18 @@
 {
-    "locale": "locale",
-    "Profile": "Profile",
-    "Settings": "Settings",
-    "Logout": "Logout"
+  "locale": "locale",
+  "Profile": "Profile",
+  "Settings": "Settings",
+  "Logout": "Logout",
+  "Name": "Name",
+  "Progress": "Progress",
+  "AvgTime": "Avg Time (s)",
+  "Score": "Score",
+  "Status": "Status",
+  "NotStarted": "Not Started",
+  "InProgress": "In Progress",
+  "Completed": "Completed",
+  "Students": "Students",
+  "Questions": "Questions",
+  "Date": "Date",
+  "Dashboard": "Dashboard"
 }

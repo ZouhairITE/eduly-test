@@ -9,8 +9,10 @@ import { ProfileMenu } from "./profile-menu";
 import ThemeSwitcher from "./theme-switcher";
 import LocaleSwitcher from "./locale-switcher";
 import Link from "next/link";
+import { useServerTranslation } from "../../helpers/i18n-helpers";
 
-function MainAppBar() {
+async function MainAppBar() {
+    const t = await useServerTranslation();
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
@@ -43,7 +45,7 @@ function MainAppBar() {
                                 href="/dashboard"
                                 sx={{ my: 2, color: "white", display: "block" }}
                             >
-                                Dashboard
+                                {t("Dashboard")}
                             </Button>
                         </Box>
                     </Box>

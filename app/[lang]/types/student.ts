@@ -8,7 +8,7 @@ export const StudentSchema = z.object({
     totalQuestions: z.number().int().positive(),
     avgTimeSec: z.number().nonnegative(), // average time per question (seconds)
     score: z.number().min(0).max(100),
-    status: z.enum(["Not Started", "In Progress", "Completed"]),
+    status: z.enum(["NotStarted", "InProgress", "Completed"]),
 });
 
 export type StudentDTO = z.infer<typeof StudentSchema>;
