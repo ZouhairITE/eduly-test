@@ -29,5 +29,13 @@
   "AvgScoreSubtitle": "This shows the average score trend over time",
   "StatusChartSubtitle": "Shows the percentage of students who completed the exam",
   "StatusesChartSubtitle": "Shows students' count across different statuses",
-  "MarksPerQuestion": "Marks Per Question"
+  "MarksPerQuestion": "Marks Per Question",
+  "CompletedQuestions": "Completed Questions",
+  "AvgTimePerQ": "Avg Time per Q",
+  "StudentProfile": "Student Profile",
+  "Close": "Close",
+  "Sec": "sec",
+  "Contact": "Contact",
+  "Notes": "Notes",
+  "NotesContent": "has been performing consistently. Keep monitoring their progress and provide additional practice where needed."
 }

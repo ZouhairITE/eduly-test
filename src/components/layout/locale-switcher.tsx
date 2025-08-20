@@ -58,6 +58,7 @@ export default function LocaleSwitcher() {
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
+                disableScrollLock
                 slotProps={{
                     list: { "aria-labelledby": "basic-button" },
                 }}

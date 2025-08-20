@@ -29,5 +29,13 @@
   "AvgScoreSubtitle": "هذا يدل على متوسط اتجاه الدرجات مع مرور الوقت",
   "StatusChartSubtitle": "يظهر النسبة المئوية للطلاب الذين أكملوا الامتحان",
   "StatusesChartSubtitle": "يعرض عدد الطلاب عبر حالات مختلفة",
-  "MarksPerQuestion": "علامات لكل سؤال"
+  "MarksPerQuestion": "علامات لكل سؤال",
+  "AvgTimePerQ": "متوسط الوقت للسؤال",
+  "CompletedQuestions": "أسئلة مكتملة",
+  "StudentProfile": "ملف تعريف الطالب",
+  "Close": "يغلق",
+  "Sec": "ثا",
+  "Contact": "اتصال",
+  "Notes": "ملحوظات",
+  "NotesContent": "كان يؤدي باستمرار. \nاستمر في مراقبة تقدمهم وتوفير ممارسة إضافية عند الحاجة."
 }
