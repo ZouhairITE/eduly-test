@@ -1,17 +1,17 @@
 "use client";
 
+import { useTranslation } from "@/src/shared-fe/hooks/use-translation";
+import { ExamDTO } from "@/src/types/exam";
+import { Assignment } from "@mui/icons-material";
 import {
+    Avatar,
+    Box,
     Card,
     CardContent,
     CardHeader,
     Divider,
     Typography,
-    Avatar,
-    Box,
 } from "@mui/material";
-import { Assignment } from "@mui/icons-material";
-import { ExamDTO } from "@/src/types/exam";
-import { useTranslation } from "@/src/shared-fe/hooks/use-translation";
 
 export default function ExamInfoCard({ exam }: { exam: ExamDTO }) {
     const t = useTranslation();

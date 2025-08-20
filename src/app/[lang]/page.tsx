@@ -1,11 +1,12 @@
+import Image from "next/image";
+import NextLink from "next/link";
 import * as React from "react";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
+
+import { useServerTranslation } from "@/src/lib/i18n/i18n-helpers";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import NextLink from "next/link";
-import Image from "next/image";
-import { useServerTranslation } from "@/src/lib/i18n/i18n-helpers";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 
 export default async function Home() {
     const t = await useServerTranslation();

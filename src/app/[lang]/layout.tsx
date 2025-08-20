@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Almarai } from "next/font/google";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import "./globals.css";
-import ThemeRegistry from "@/src/theme/theme-registery";
+
+import { Almarai, Geist } from "next/font/google";
+
 import MainAppBar from "@/src/components/layout/main-app-bar";
+import ThemeRegistry from "@/src/theme/theme-registery";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 
 const geistSans = Geist({
     variable: "--font-geist",

@@ -1,8 +1,10 @@
 "use client";
 import dynamic from "next/dynamic";
-import { Card, CardContent, Typography } from "@mui/material";
-import { StudentDTO } from "@/src/types/student";
+import React from "react";
+
 import { useTranslation } from "@/src/shared-fe/hooks/use-translation";
+import { StudentDTO } from "@/src/types/student";
+import { useTheme } from "@mui/material/styles";
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
     ssr: false,
@@ -13,37 +15,46 @@ interface StatusBarChartProps {
 }
 
 export default function StatusBarChart({ students }: StatusBarChartProps) {
+    const theme = useTheme();
     const t = useTranslation();
-
     const completed = students.filter((s) => s.status === "Completed").length;
     const inProgress = students.filter((s) => s.status === "InProgress").length;
     const notStarted = students.filter((s) => s.status === "NotStarted").length;
 
     const series = [
-        { name: t("Students"), data: [completed, inProgress, notStarted] },
+        { name: "Students", data: [completed, inProgress, notStarted] },
     ];
-    const options = {
-        chart: { type: "bar" as const, toolbar: { show: false } },
+    const options: ApexCharts.ApexOptions = {
+        chart: { type: "bar", toolbar: { show: false } },
         xaxis: {
             categories: [t("Completed"), t("InProgress"), t("NotStarted")],
+            labels: { style: { colors: theme.palette.text.primary } },
         },
-        yaxis: { title: { text: t("Count") } },
-        dataLabels: { enabled: true },
+        plotOptions: {
+            bar: {
+                distributed: true,
+            },
+        },
+        tooltip: { enabled: false },
+        yaxis: { labels: { style: { colors: theme.palette.text.primary } } },
+        dataLabels: {
+            enabled: true,
+        },
+        legend: {
+            show: false,
+        },
+        colors: [
+            theme.palette.success.main,
+            theme.palette.warning.main,
+            theme.palette.error.main,
+        ],
     };
-
     return (
-        <Card sx={{ borderRadius: 3, mt: 2 }}>
-            <CardContent>
-                <Typography variant="subtitle1" fontWeight="bold">
-                    {t("StudentsStatus")}
-                </Typography>
-                <ReactApexChart
-                    type="bar"
-                    series={series}
-                    options={options}
-                    height={300}
-                />
-            </CardContent>
-        </Card>
+        <ReactApexChart
+            type="bar"
+            series={series}
+            options={options}
+            height={300}
+        />
     );
 }

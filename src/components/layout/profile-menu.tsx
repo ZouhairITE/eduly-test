@@ -1,12 +1,13 @@
 "use client";
-import { useState, MouseEvent } from "react";
+import { MouseEvent, useState } from "react";
+
+import { useTranslation } from "@/src/shared-fe/hooks/use-translation";
+import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import Avatar from "@mui/material/Avatar";
 import MenuItem from "@mui/material/MenuItem";
-import { useTranslation } from "@/src/shared-fe/hooks/use-translation";
+import Typography from "@mui/material/Typography";
 
 export function ProfileMenu() {
     const t = useTranslation();

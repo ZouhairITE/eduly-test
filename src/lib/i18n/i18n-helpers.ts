@@ -1,9 +1,11 @@
-import { Locale, SUPPORTED_LOCALES, i18n } from "@/src/lib/i18n/i18n-config";
-import { TranslationKey, getDictionary } from "@/src/lib/i18n/get-dictionary";
-import { cookies, headers } from "next/headers";
 import Negotiator from "negotiator";
+import { cookies, headers } from "next/headers";
 import { NextRequest } from "next/server";
+
+import { getDictionary, TranslationKey } from "@/src/lib/i18n/get-dictionary";
+import { i18n, Locale, SUPPORTED_LOCALES } from "@/src/lib/i18n/i18n-config";
 import { match as matchLocale } from "@formatjs/intl-localematcher";
+
 import { LOCALE_COOKIE_NAME } from "../app-consts";
 
 export function isLocale(value: string): value is Locale {

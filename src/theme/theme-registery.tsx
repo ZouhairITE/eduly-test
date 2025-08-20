@@ -1,13 +1,21 @@
 "use client";
 
-import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 import { useParams } from "next/navigation";
-import { ReactNode, useMemo, useState, useEffect } from "react";
-import { CacheProvider } from "@emotion/react";
-import createCache from "@emotion/cache";
+import {
+    createContext,
+    ReactNode,
+    useContext,
+    useEffect,
+    useMemo,
+    useState,
+} from "react";
 import { prefixer } from "stylis";
+
+import createCache from "@emotion/cache";
+import { CacheProvider } from "@emotion/react";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import rtlPlugin from "@mui/stylis-plugin-rtl";
-import { createContext, useContext } from "react";
+
 import { THEME_STORAGE_NAME } from "../lib/app-consts";
 
 type ThemeOption = "light" | "dark";

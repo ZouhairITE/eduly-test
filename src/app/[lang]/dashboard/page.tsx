@@ -1,16 +1,16 @@
 "use client";
 
-import { usePolling } from "@/src/shared-fe/hooks/use-pollling";
-import { fetchExam } from "@/src/shared-fe/api/exam-client";
-import { fetchStudents } from "@/src/shared-fe/api/students-client";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
 import ExamInfoCard from "@/src/components/dashboard/exam-info-card";
 import GridPanel from "@/src/components/dashboard/grid-panel";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-import { useTranslation } from "@/src/shared-fe/hooks/use-translation";
 import StatisticsPanel from "@/src/components/dashboard/statistics-panel";
+import { fetchExam } from "@/src/shared-fe/api/exam-client";
+import { fetchStudents } from "@/src/shared-fe/api/students-client";
+import { usePolling } from "@/src/shared-fe/hooks/use-pollling";
+import { useTranslation } from "@/src/shared-fe/hooks/use-translation";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 
 export default function DashboardPage() {
     const examPoll = usePolling({ fetcher: fetchExam, intervalMs: 5000 });

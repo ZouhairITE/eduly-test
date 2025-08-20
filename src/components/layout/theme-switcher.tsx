@@ -1,9 +1,9 @@
 "use client";
 
-import { IconButton } from "@mui/material";
 import { useThemeToggle } from "@/src/theme/theme-registery";
-import SunnyIcon from "@mui/icons-material/Sunny";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import SunnyIcon from "@mui/icons-material/Sunny";
+import { IconButton } from "@mui/material";
 
 export default function ThemeSwitcher() {
     const { mode, setMode } = useThemeToggle();

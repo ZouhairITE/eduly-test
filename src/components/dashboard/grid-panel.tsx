@@ -1,20 +1,22 @@
 "use client";
 
+import { AnimatePresence } from "motion/react";
+import { useState } from "react";
+
+import { useTranslation } from "@/src/shared-fe/hooks/use-translation";
+import { StudentDTO } from "@/src/types/student";
 import {
+    Card,
+    Paper,
     Table,
     TableBody,
     TableCell,
     TableContainer,
     TableHead,
     TableRow,
-    Paper,
     TableSortLabel,
-    Card,
 } from "@mui/material";
-import { useState } from "react";
-import { StudentDTO } from "@/src/types/student";
-import { useTranslation } from "@/src/shared-fe/hooks/use-translation";
-import { AnimatePresence } from "motion/react";
+
 import TableRowRenderer from "./table/row-renderer";
 
 type Order = "asc" | "desc";

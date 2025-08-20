@@ -1,7 +1,8 @@
 "use client";
 import dynamic from "next/dynamic";
-import { Card, CardContent, Typography } from "@mui/material";
+
 import { useTranslation } from "@/src/shared-fe/hooks/use-translation";
+import { Card, CardContent, Typography, useTheme } from "@mui/material";
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
     ssr: false,
@@ -13,22 +14,38 @@ interface PieChartProps {
 
 export default function PieChartComponent({ percentCompleted }: PieChartProps) {
     const t = useTranslation();
+    const theme = useTheme();
 
     const series = [percentCompleted, 100 - percentCompleted];
-    const options = {
+
+    const options: ApexCharts.ApexOptions = {
         labels: [t("Completed"), t("NotCompleted")],
-        legend: { position: "bottom" },
+        colors: [theme.palette.success.main, theme.palette.info.main],
+        legend: {
+            position: "bottom",
+            labels: { colors: theme.palette.text.primary },
+        },
+
         dataLabels: {
             enabled: true,
             formatter: (val: number) => `${val.toFixed(0)}%`,
         },
-        tooltip: { y: { formatter: (val: number) => `${val.toFixed(0)}%` } },
+        tooltip: {
+            enabled: false,
+            y: {
+                formatter: (val: number) => `${val.toFixed(0)}%`,
+            },
+        },
     };
 
     return (
         <Card sx={{ borderRadius: 3, mt: 2 }}>
             <CardContent>
-                <Typography variant="subtitle1" fontWeight="bold">
+                <Typography
+                    variant="subtitle1"
+                    fontWeight="bold"
+                    sx={{ mb: 2 }}
+                >
                     {t("ExamCompletion")}
                 </Typography>
                 <ReactApexChart

@@ -1,15 +1,17 @@
+import Image from "next/image";
+import Link from "next/link";
+
+import { useServerTranslation } from "@/src/lib/i18n/i18n-helpers";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import Image from "next/image";
+import Container from "@mui/material/Container";
+import Toolbar from "@mui/material/Toolbar";
+
+import LocaleSwitcher from "./locale-switcher";
 import { MobileMenu } from "./mobile-menu";
 import { ProfileMenu } from "./profile-menu";
 import ThemeSwitcher from "./theme-switcher";
-import LocaleSwitcher from "./locale-switcher";
-import Link from "next/link";
-import { useServerTranslation } from "@/src/lib/i18n/i18n-helpers";
 
 async function MainAppBar() {
     const t = await useServerTranslation();

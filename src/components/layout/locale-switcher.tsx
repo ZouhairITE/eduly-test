@@ -1,14 +1,15 @@
 "use client";
 
-import React from "react";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { i18n, type Locale } from "@/src/lib/i18n/i18n-config";
+import { usePathname } from "next/navigation";
+import React from "react";
+
+import { LOCALE_COOKIE_NAME } from "@/src/lib/app-consts";
+import { i18n, Locale } from "@/src/lib/i18n/i18n-config";
+import LanguageIcon from "@mui/icons-material/Language";
+import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import IconButton from "@mui/material/IconButton";
-import LanguageIcon from "@mui/icons-material/Language";
-import { LOCALE_COOKIE_NAME } from "@/src/lib/app-consts";
 
 const localesText = {
     en: "English",
