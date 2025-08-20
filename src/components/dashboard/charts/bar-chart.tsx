@@ -58,6 +58,13 @@ export default function StatusBarChart({ students }: StatusBarChartProps) {
                 <Typography variant="subtitle1" fontWeight="bold">
                     {t("StudentsByStatus")}
                 </Typography>
+                <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ mb: 2 }}
+                >
+                    {t("StatusesChartSubtitle")}
+                </Typography>
                 <ReactApexChart
                     type="bar"
                     series={series}

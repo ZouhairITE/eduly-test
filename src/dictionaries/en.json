@@ -25,5 +25,8 @@
   "AverageScore": "Average Score",
   "Count": "Count",
   "StudentsStatus": "Students Status",
-  "StudentsByStatus": "Students By Status"
+  "StudentsByStatus": "Students By Status",
+  "AvgScoreSubtitle": "This shows the average score trend over time",
+  "StatusChartSubtitle": "Shows the percentage of students who completed the exam",
+  "StatusesChartSubtitle": "Shows students' count across different statuses"
 }

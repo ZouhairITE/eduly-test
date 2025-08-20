@@ -24,7 +24,12 @@ export function ProfileMenu() {
     return (
         <Box sx={{ flexGrow: 0 }}>
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Eduly User" sx={{ height: 36, width: 36 }} />
+                <Avatar
+                    alt="Eduly User"
+                    sx={{ bgcolor: "secondary.main", height: 36, width: 36 }}
+                >
+                    E
+                </Avatar>
             </IconButton>
             <Menu
                 sx={{ mt: "45px" }}
@@ -34,13 +39,13 @@ export function ProfileMenu() {
                     vertical: "top",
                     horizontal: "right",
                 }}
-                keepMounted
                 transformOrigin={{
                     vertical: "top",
                     horizontal: "right",
                 }}
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
+                disableScrollLock // 👈 this prevents the body from shifting
             >
                 {settings.map((setting) => (
                     <MenuItem key={setting} onClick={handleCloseUserMenu}>

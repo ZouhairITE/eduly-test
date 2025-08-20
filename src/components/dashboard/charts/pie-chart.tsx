@@ -44,12 +44,15 @@ export default function PieChartComponent({ percentCompleted }: PieChartProps) {
     return (
         <Card sx={{ borderRadius: 3, mt: 2 }}>
             <CardContent>
+                <Typography variant="subtitle1" fontWeight="bold">
+                    {t("ExamCompletion")}
+                </Typography>
                 <Typography
-                    variant="subtitle1"
-                    fontWeight="bold"
+                    variant="body2"
+                    color="text.secondary"
                     sx={{ mb: 2 }}
                 >
-                    {t("ExamCompletion")}
+                    {t("StatusChartSubtitle")}
                 </Typography>
                 <ReactApexChart
                     type="pie"

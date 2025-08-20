@@ -16,7 +16,11 @@ import ThemeSwitcher from "./theme-switcher";
 async function MainAppBar() {
     const t = await useServerTranslation();
     return (
-        <AppBar position="static">
+        <AppBar
+            sx={{ borderRadius: "0 0 16px 16px" }}
+            elevation={5}
+            position="static"
+        >
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Box

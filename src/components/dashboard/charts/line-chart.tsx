@@ -69,6 +69,13 @@ export default function LineChartAverageScore({
                 <Typography variant="subtitle1" fontWeight="bold">
                     {t("AverageScoreOverTime")}
                 </Typography>
+                <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ mb: 1 }}
+                >
+                    {t("AvgScoreSubtitle")}
+                </Typography>
                 <ReactApexChart
                     type="line"
                     series={series}

@@ -19,9 +19,9 @@ export default function StatisticsPanel({
 }: ExamChartsProps) {
     return (
         <>
-            <PieChartComponent percentCompleted={percentCompleted} />
             <LineChartAverageScore averageScore={averageScore} />
             <StatusBarChart students={students} />
+            <PieChartComponent percentCompleted={percentCompleted} />
         </>
     );
 }

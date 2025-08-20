@@ -19,7 +19,7 @@ import TableRowRenderer from "./table/row-renderer";
 type Order = "asc" | "desc";
 
 export default function GridPanel({ students }: { students: StudentDTO[] }) {
-    const [orderBy, setOrderBy] = useState<keyof StudentDTO>("name");
+    const [orderBy, setOrderBy] = useState<keyof StudentDTO>("score");
     const [order, setOrder] = useState<Order>("asc");
     const t = useTranslation();
 
