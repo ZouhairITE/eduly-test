@@ -21,7 +21,7 @@ export default function DashboardPage() {
     const t = useTranslation();
 
     return (
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
             <Box p={2}>
                 {/* Page Title */}
                 <Typography

@@ -4,7 +4,10 @@ import React from "react";
 
 import { useTranslation } from "@/src/shared-fe/hooks/use-translation";
 import { StudentDTO } from "@/src/types/student";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 import { useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
     ssr: false,
@@ -50,11 +53,18 @@ export default function StatusBarChart({ students }: StatusBarChartProps) {
         ],
     };
     return (
-        <ReactApexChart
-            type="bar"
-            series={series}
-            options={options}
-            height={300}
-        />
+        <Card sx={{ borderRadius: 3, mt: 2 }}>
+            <CardContent>
+                <Typography variant="subtitle1" fontWeight="bold">
+                    {t("StudentsByStatus")}
+                </Typography>
+                <ReactApexChart
+                    type="bar"
+                    series={series}
+                    options={options}
+                    height={300}
+                />
+            </CardContent>
+        </Card>
     );
 }

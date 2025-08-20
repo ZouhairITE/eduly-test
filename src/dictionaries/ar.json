@@ -24,5 +24,6 @@
   "ExamCompletion": "إكمال الامتحان",
   "ExamProgressCharts": "مخططات التقدم امتحان",
   "NotCompleted": "لم يكتمل",
-  "StudentsStatus": "حالة الطلاب"
+  "StudentsStatus": "حالة الطلاب",
+  "StudentsByStatus": "الطلاب حسب الحالة"
 }

@@ -24,5 +24,6 @@
   "AverageScoreOverTime": "Average Score Over Time",
   "AverageScore": "Average Score",
   "Count": "Count",
-  "StudentsStatus": "Students Status"
+  "StudentsStatus": "Students Status",
+  "StudentsByStatus": "Students By Status"
 }

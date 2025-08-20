@@ -3,7 +3,8 @@ import { ExamDTO } from "@/src/types/exam";
 import { StudentDTO } from "@/src/types/student";
 
 const EXAM_ID = "exam-1";
-const TOTAL_QUESTIONS = 40;
+const TOTAL_QUESTIONS = 50;
+const MARKS_PER_QUESTION = 2;
 
 const studentNames = [
     "Ava Patel",
@@ -19,8 +20,8 @@ function clamp(v: number, min: number, max: number) {
     return Math.min(max, Math.max(min, v));
 }
 
-// --- In-memory state (simulates DB) ---
-let students: StudentDTO[] = studentNames.slice(0, 7).map((name, idx) => ({
+// --- In-memory state ---
+let students: StudentDTO[] = studentNames.map((name, idx) => ({
     id: `stu-${idx + 1}`,
     name,
     totalQuestions: TOTAL_QUESTIONS,
@@ -69,49 +70,33 @@ export function tickStudentsProgress() {
         // If already completed, occasionally leave untouched
         if (s.status === "Completed" && Math.random() < 0.7) continue;
 
-        // Start students if not started
         let completed = s.completedQuestions;
         let status = s.status;
+
         if (status === "NotStarted") status = "InProgress";
 
-        // Advance by 1–3 questions
+        // Advance 1–3 questions
         const step = Math.max(1, Math.ceil(Math.random() * 3));
-        completed = clamp(completed + step, 0, s.totalQuestions);
+        completed = clamp(completed + step, 0, TOTAL_QUESTIONS);
 
-        // Update avg time (random walk around 40–90 sec)
-        const newAvg = clamp(
-            (s.avgTimeSec || 60) + (Math.random() - 0.5) * 6,
-            30,
-            120
-        );
-
-        // If finished, compute a plausible score (60–100, with small noise)
-        let score = s.score;
-        if (completed >= s.totalQuestions) {
-            status = "Completed";
-            score =
-                s.score > 0
-                    ? s.score
-                    : Math.round(
-                          clamp(
-                              60 +
-                                  Math.random() * 40 +
-                                  (Math.random() - 0.5) * 5,
-                              60,
-                              100
-                          )
-                      );
-        } else {
-            // While in progress, let score drift slightly (for "live" feel)
-            score = clamp(s.score + (Math.random() - 0.5) * 3, 0, 100);
+        // Calculate score: each completed question has 0 or 2 points
+        let score = 0;
+        for (let i = 0; i < completed; i++) {
+            score += Math.random() < 0.7 ? MARKS_PER_QUESTION : 0; // 70% chance correct
         }
+        score = Math.round(score);
+
+        // Update status
+        if (completed >= TOTAL_QUESTIONS) status = "Completed";
 
         students[idx] = {
             ...s,
             completedQuestions: completed,
             status,
-            avgTimeSec: Math.round(newAvg),
-            score: Math.round(score),
+            avgTimeSec: Math.round(
+                clamp((s.avgTimeSec || 60) + (Math.random() - 0.5) * 6, 30, 120)
+            ),
+            score,
         };
     }
 
