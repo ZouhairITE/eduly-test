@@ -3,7 +3,7 @@
 import { useThemeToggle } from "@/src/theme/theme-registery";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import SunnyIcon from "@mui/icons-material/Sunny";
-import { IconButton } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
 
 export default function ThemeSwitcher() {
     const { mode, setMode } = useThemeToggle();

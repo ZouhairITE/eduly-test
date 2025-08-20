@@ -1,8 +1,8 @@
 "use client";
 
-import { Typography } from "@mui/material";
-import { StudentDTO } from "@/src/types/student";
 import { useTranslation } from "@/src/shared-fe/hooks/use-translation";
+import { StudentDTO } from "@/src/types/student";
+import Typography from "@mui/material/Typography";
 
 export default function StatusRenderer({
     status,

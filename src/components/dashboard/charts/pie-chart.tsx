@@ -2,7 +2,10 @@
 import dynamic from "next/dynamic";
 
 import { useTranslation } from "@/src/shared-fe/hooks/use-translation";
-import { Card, CardContent, Typography, useTheme } from "@mui/material";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import { useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
     ssr: false,

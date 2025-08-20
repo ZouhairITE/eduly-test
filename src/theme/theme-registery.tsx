@@ -13,7 +13,8 @@ import { prefixer } from "stylis";
 
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
-import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import rtlPlugin from "@mui/stylis-plugin-rtl";
 
 import { THEME_STORAGE_NAME } from "../lib/app-consts";

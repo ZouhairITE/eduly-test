@@ -1,9 +1,12 @@
 "use client";
 
-import { TableCell, Typography } from "@mui/material";
 import { motion } from "motion/react";
-import ProgressCellRenderer from "./progress-cell-renderer";
+
 import { StudentDTO } from "@/src/types/student";
+import TableCell from "@mui/material/TableCell";
+import Typography from "@mui/material/Typography";
+
+import ProgressCellRenderer from "./progress-cell-renderer";
 import StatusCellRenderer from "./status-cell-renderer";
 
 const MotionTableRow = motion.create("tr");

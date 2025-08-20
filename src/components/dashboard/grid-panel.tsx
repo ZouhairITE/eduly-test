@@ -5,17 +5,14 @@ import { useState } from "react";
 
 import { useTranslation } from "@/src/shared-fe/hooks/use-translation";
 import { StudentDTO } from "@/src/types/student";
-import {
-    Card,
-    Paper,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
-    TableSortLabel,
-} from "@mui/material";
+import Card from "@mui/material/Card";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import TableSortLabel from "@mui/material/TableSortLabel";
 
 import TableRowRenderer from "./table/row-renderer";
 
