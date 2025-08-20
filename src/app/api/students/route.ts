@@ -1,27 +1,25 @@
 // app/api/students/route.ts
 import { NextResponse } from "next/server";
-import { StudentsResponseSchema } from "@/src/types/student";
+
 import {
+    getExam,
     getStudents,
     tickStudentsProgress,
-    getExam,
 } from "@/src/services/mock-data";
+import { StudentsResponseSchema } from "@/src/types/student";
 
 function sleep(ms: number) {
     return new Promise((res) => setTimeout(res, ms));
 }
 
 export async function GET() {
-    console.log("GET");
-
-    // Artificial delay
     await sleep(100);
 
     // Advance "live" state on every request
     tickStudentsProgress();
 
-    const students = getStudents();
-    const exam = getExam();
+    const students = await getStudents();
+    const exam = await getExam();
 
     const payload = {
         students,

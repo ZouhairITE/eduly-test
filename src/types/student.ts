@@ -1,14 +1,20 @@
-// types/student.ts
 import { z } from "zod";
+
+export const StudentStatusEnum = z.enum([
+    "NotStarted",
+    "InProgress",
+    "Completed",
+]);
+export type StudentStatus = z.infer<typeof StudentStatusEnum>;
 
 export const StudentSchema = z.object({
     id: z.string(),
     name: z.string(),
     completedQuestions: z.number().int().min(0),
     totalQuestions: z.number().int().positive(),
-    avgTimeSec: z.number().nonnegative(), // average time per question (seconds)
+    avgTimeSec: z.number().nonnegative(),
     score: z.number().min(0).max(100),
-    status: z.enum(["NotStarted", "InProgress", "Completed"]),
+    status: StudentStatusEnum,
 });
 
 export type StudentDTO = z.infer<typeof StudentSchema>;

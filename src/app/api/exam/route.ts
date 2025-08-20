@@ -1,17 +1,17 @@
 // app/api/exam/route.ts
 import { NextResponse } from "next/server";
-import { ExamSchema } from "@/src/types/exam";
+
 import { getExam } from "@/src/services/mock-data";
+import { ExamSchema } from "@/src/types/exam";
 
 function sleep(ms: number) {
     return new Promise((res) => setTimeout(res, ms));
 }
 
 export async function GET() {
-    // Artificial delay to simulate network / server time
     await sleep(100);
 
-    const data = getExam();
+    const data = await getExam();
     // Validate with Zod before sending
     const parsed = ExamSchema.parse(data);
 

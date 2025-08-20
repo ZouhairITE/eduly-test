@@ -1,6 +1,6 @@
 // services/mockData.ts
 import { ExamDTO } from "@/src/types/exam";
-import { StudentDTO } from "@/src/types/student";
+import { StudentDTO, StudentStatus } from "@/src/types/student";
 
 const EXAM_ID = "exam-1";
 const TOTAL_QUESTIONS = 50;
@@ -59,54 +59,85 @@ function recomputeExamAggregates() {
     exam = { ...exam, percentCompleted, averageScore: avgScore };
 }
 
-// --- Simulate progress on each poll ---
 export function tickStudentsProgress() {
+    const CORRECT_PROB = 0.5; // 50% chance the student answers correctly
+
     // randomly pick 1–3 students to update
     const toUpdate = Math.max(1, Math.round(Math.random() * 3));
+
     for (let i = 0; i < toUpdate; i++) {
         const idx = Math.floor(Math.random() * students.length);
         const s = students[idx];
 
-        // If already completed, occasionally leave untouched
-        if (s.status === "Completed" && Math.random() < 0.7) continue;
-
-        let completed = s.completedQuestions;
-        let status = s.status;
-
-        if (status === "NotStarted") status = "InProgress";
-
-        // Advance 1–3 questions
-        const step = Math.max(1, Math.ceil(Math.random() * 3));
-        completed = clamp(completed + step, 0, TOTAL_QUESTIONS);
-
-        // Calculate score: each completed question has 0 or 2 points
-        let score = 0;
-        for (let i = 0; i < completed; i++) {
-            score += Math.random() < 0.7 ? MARKS_PER_QUESTION : 0; // 70% chance correct
+        // 🔄 Loop students: if completed, reset them to fresh
+        if (s.status === "Completed") {
+            students[idx] = {
+                ...s,
+                completedQuestions: 0,
+                avgTimeSec: 0,
+                score: 0,
+                status: "NotStarted",
+            };
+            continue; // skip rest of logic this tick
         }
-        score = Math.round(score);
 
-        // Update status
-        if (completed >= TOTAL_QUESTIONS) status = "Completed";
+        // Ensure student is in progress once they start answering
+        let completed = s.completedQuestions;
+        let status: StudentStatus = "InProgress";
+        let score = s.score;
+
+        // How many questions to answer this tick (respect remaining)
+        const remaining = s.totalQuestions - completed;
+        if (remaining <= 0) {
+            status = "Completed";
+        } else {
+            const step = Math.max(1, Math.ceil(Math.random() * 3));
+            const toAnswer = Math.min(step, remaining);
+
+            // Answer questions one by one; +2 if correct
+            for (let q = 0; q < toAnswer; q++) {
+                completed += 1;
+                if (Math.random() < CORRECT_PROB) {
+                    score += MARKS_PER_QUESTION; // +2
+                }
+            }
+
+            // Cap score to 100 (TOTAL_QUESTIONS * MARKS_PER_QUESTION)
+            score = clamp(score, 0, TOTAL_QUESTIONS * MARKS_PER_QUESTION);
+
+            // If finished exactly now, mark completed
+            if (completed >= s.totalQuestions) {
+                status = "Completed";
+            }
+        }
+
+        // Average time random walk (only while not completed), rounded int
+        const nextAvg =
+            status === "Completed"
+                ? s.avgTimeSec
+                : clamp(
+                      (s.avgTimeSec || 60) + (Math.random() - 0.5) * 6,
+                      30,
+                      120
+                  );
 
         students[idx] = {
             ...s,
             completedQuestions: completed,
             status,
-            avgTimeSec: Math.round(
-                clamp((s.avgTimeSec || 60) + (Math.random() - 0.5) * 6, 30, 120)
-            ),
+            avgTimeSec: Math.round(nextAvg),
             score,
         };
     }
 
+    // Recompute exam aggregates
     recomputeExamAggregates();
 }
 
-export function getExam(): ExamDTO {
-    return exam;
+export function getExam(): Promise<ExamDTO> {
+    return Promise.resolve({ ...exam });
 }
 
-export function getStudents(): StudentDTO[] {
-    return students;
+export function getStudents(): Promise<StudentDTO[]> {
+    return Promise.resolve(students.map((s) => ({ ...s })));
 }

@@ -22,7 +22,10 @@ export default function LineChartAverageScore({
 
     // Append new data point whenever averageScore changes
     useEffect(() => {
-        setDataSeries((prev) => [...prev, averageScore]);
+        setDataSeries((prev) => {
+            const newSeries = [...prev, averageScore];
+            return newSeries.slice(-7);
+        });
     }, [averageScore]);
 
     const series = [{ name: t("AverageScore"), data: dataSeries }];
