@@ -34,6 +34,7 @@ export default function LineChartAverageScore({
     const series = [{ name: t("AverageScore"), data: dataSeries }];
     const options: ApexCharts.ApexOptions = {
         chart: {
+            zoom: { enabled: false },
             type: "line",
             toolbar: { show: false },
             animations: { enabled: true, speed: 500 },

@@ -28,5 +28,6 @@
   "StudentsByStatus": "الطلاب حسب الحالة",
   "AvgScoreSubtitle": "هذا يدل على متوسط اتجاه الدرجات مع مرور الوقت",
   "StatusChartSubtitle": "يظهر النسبة المئوية للطلاب الذين أكملوا الامتحان",
-  "StatusesChartSubtitle": "يعرض عدد الطلاب عبر حالات مختلفة"
+  "StatusesChartSubtitle": "يعرض عدد الطلاب عبر حالات مختلفة",
+  "MarksPerQuestion": "علامات لكل سؤال"
 }

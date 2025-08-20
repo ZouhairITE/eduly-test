@@ -45,11 +45,18 @@ export default function ProgressCellRenderer({
             <LinearProgress
                 variant="determinate"
                 value={barValue}
+                color="primary"
                 sx={{
                     height: 6,
                     borderRadius: 5,
                     mt: 0.5,
-                    transition: "none",
+                    transition: "background-color 0.3s",
+                    "& .MuiLinearProgress-bar": {
+                        backgroundColor:
+                            barValue < 100
+                                ? (theme) => theme.palette.primary.main
+                                : (theme) => theme.palette.success.main,
+                    },
                 }}
             />
         </Box>

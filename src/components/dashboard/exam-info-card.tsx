@@ -1,3 +1,4 @@
+import { MARKS_PER_QUESTION, TOTAL_QUESTIONS } from "@/src/lib/app-consts";
 import { useServerTranslation } from "@/src/lib/i18n/i18n-helpers";
 import { getExam } from "@/src/services/mock-data";
 import { Assignment } from "@mui/icons-material";
@@ -80,8 +81,15 @@ export default async function ExamInfoCard() {
                         <Typography variant="subtitle2" color="text.secondary">
                             {t("Questions")}
                         </Typography>
+                        <Typography variant="h6">{TOTAL_QUESTIONS}</Typography>
+                    </Box>
+
+                    <Box flex="1" minWidth={120}>
+                        <Typography variant="subtitle2" color="text.secondary">
+                            {t("MarksPerQuestion")}
+                        </Typography>
                         <Typography variant="h6">
-                            {exam.totalQuestions}
+                            {MARKS_PER_QUESTION}
                         </Typography>
                     </Box>
                 </Box>

@@ -38,9 +38,7 @@ export default async function RootLayout({
                 <AppRouterCacheProvider>
                     <ThemeRegistry>
                         <MainAppBar />
-                        <main style={{ marginTop: "64px", padding: "1rem" }}>
-                            {children}
-                        </main>
+                        <main style={{ marginTop: "64px" }}>{children}</main>
                     </ThemeRegistry>
                 </AppRouterCacheProvider>
             </body>
