@@ -4,8 +4,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 type UsePollingOptions<T> = {
     fetcher: () => Promise<T>;
-    intervalMs?: number; // default 4000
-    immediate?: boolean; // run once immediately
+    intervalMs?: number;
+    immediate?: boolean;
 };
 
 export function usePolling<T>({

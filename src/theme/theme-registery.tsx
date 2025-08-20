@@ -26,13 +26,11 @@ function isThemeOption(value: string): value is ThemeOption {
     return themeOptions.includes(value);
 }
 
-// Create rtl cache
 const rtlCache = createCache({
     key: "muirtl",
     stylisPlugins: [prefixer, rtlPlugin],
 });
 
-// Create context
 const ThemeToggleContext = createContext<{
     mode: ThemeOption;
     setMode: (mode: ThemeOption) => void;
@@ -49,7 +47,6 @@ export const useThemeToggle = () => {
 export default function ThemeRegistry({ children }: { children: ReactNode }) {
     const [mode, setMode] = useState<ThemeOption>("light");
 
-    // Load preference from localStorage or system preference
     useEffect(() => {
         const savedMode = localStorage.getItem(THEME_STORAGE_NAME);
         if (savedMode && isThemeOption(savedMode)) {
@@ -62,7 +59,6 @@ export default function ThemeRegistry({ children }: { children: ReactNode }) {
         }
     }, []);
 
-    // Save to localStorage when user changes theme
     useEffect(() => {
         localStorage.setItem(THEME_STORAGE_NAME, mode);
     }, [mode]);

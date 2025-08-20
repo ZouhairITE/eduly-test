@@ -44,7 +44,7 @@ export default function GridPanel({ students }: { students: StudentDTO[] }) {
             : String(valB).localeCompare(String(valA));
     });
 
-    // Keyboard navigation
+    // Keyboard navigation code
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (sortedStudents.length === 0) return;

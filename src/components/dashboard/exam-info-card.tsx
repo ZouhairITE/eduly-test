@@ -26,7 +26,7 @@ export default async function ExamInfoCard() {
 
     return (
         <Card
-            elevation={3} // keep your shadow
+            elevation={3}
             sx={{
                 borderRadius: 3,
                 overflow: "hidden",

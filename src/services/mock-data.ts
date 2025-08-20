@@ -90,7 +90,7 @@ export function tickStudentsProgress() {
             for (let q = 0; q < toAnswer; q++) {
                 completed += 1;
                 if (Math.random() < CORRECT_PROB) {
-                    score += MARKS_PER_QUESTION; // +2
+                    score += MARKS_PER_QUESTION;
                 }
             }
 

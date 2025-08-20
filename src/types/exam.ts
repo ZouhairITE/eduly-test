@@ -1,4 +1,3 @@
-// types/exam.ts
 import { z } from "zod";
 
 export const ExamSchema = z.object({

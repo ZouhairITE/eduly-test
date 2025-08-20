@@ -1,4 +1,3 @@
-// app/api/students/route.ts
 import { NextResponse } from "next/server";
 
 import {
@@ -15,7 +14,6 @@ function sleep(ms: number) {
 export async function GET() {
     await sleep(100);
 
-    // Advance "live" state on every request
     tickStudentsProgress();
 
     const students = await getStudents();

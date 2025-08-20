@@ -33,7 +33,6 @@ export default function StudentDetailsModal({
 
     if (!student) return null;
 
-    // ✅ Extract reusable stat data into a memoized array
     const studentStats = useMemo(
         () => [
             { label: t("Score"), value: student.score },

@@ -15,6 +15,7 @@ const geistSans = Geist({
 const almaraiSans = Almarai({
     variable: "--font-almarai",
     weight: "400",
+    subsets: ["arabic"],
 });
 
 export const metadata: Metadata = {

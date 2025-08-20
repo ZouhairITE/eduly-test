@@ -4,7 +4,6 @@ export const THEME_STORAGE_NAME = "eduly_theme";
 export const TOTAL_QUESTIONS = 20;
 export const MARKS_PER_QUESTION = 2;
 
-// src/lib/app-consts.ts
 export const META = {
     en: {
         title: "Eduly Exam Dashboard",
