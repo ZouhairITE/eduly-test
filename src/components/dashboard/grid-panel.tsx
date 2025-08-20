@@ -88,7 +88,7 @@ export default function GridPanel({ students }: { students: StudentDTO[] }) {
                         </TableCell>
                     </TableRow>
                 </TableHead>
-                <TableBody>
+                <TableBody data-testid="student-list">
                     <AnimatePresence>
                         {sortedStudents.map((s) => (
                             <TableRowRenderer key={s.id} student={s} />

@@ -54,6 +54,7 @@ export default async function Home() {
 
                 {/* CTA Button */}
                 <Button
+                    data-testid="get-started"
                     component={NextLink}
                     href="/dashboard"
                     variant="contained"
