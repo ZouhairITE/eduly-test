@@ -2,9 +2,9 @@ import React from "react";
 
 import { StudentDTO } from "@/src/types/student";
 
-import StatusBarChart from "./charts/BarChart";
-import LineChartAverageScore from "./charts/LineChart";
-import PieChartComponent from "./charts/PieChart";
+import StatusBarChart from "./charts/bar-chart";
+import LineChartAverageScore from "./charts/line-chart";
+import PieChartComponent from "./charts/pie-chart";
 
 interface ExamChartsProps {
     students: StudentDTO[];
