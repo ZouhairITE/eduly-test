@@ -14,14 +14,26 @@ export default async function ExamInfoCard() {
     const exam = await getExam();
     const t = await useServerTranslation();
 
+    const stats = [
+        {
+            label: t("Date"),
+            value: new Date(exam.dateTimeISO).toLocaleString(),
+        },
+        { label: t("Students"), value: exam.totalStudents },
+        { label: t("Questions"), value: TOTAL_QUESTIONS },
+        { label: t("MarksPerQuestion"), value: MARKS_PER_QUESTION },
+    ];
+
     return (
         <Card
-            elevation={3}
+            elevation={3} // keep your shadow
             sx={{
                 borderRadius: 3,
                 overflow: "hidden",
                 width: "100%",
             }}
+            role="region"
+            aria-labelledby="exam-title"
         >
             <CardHeader
                 avatar={
@@ -31,17 +43,27 @@ export default async function ExamInfoCard() {
                             width: 56,
                             height: 56,
                         }}
+                        aria-hidden="true"
                     >
                         <Assignment fontSize="large" />
                     </Avatar>
                 }
                 title={
-                    <Typography variant="h5" fontWeight="bold">
+                    <Typography
+                        id="exam-title"
+                        variant="h5"
+                        fontWeight="bold"
+                        tabIndex={0}
+                    >
                         {exam.title}
                     </Typography>
                 }
                 subheader={
-                    <Typography variant="subtitle1" color="text.secondary">
+                    <Typography
+                        variant="subtitle1"
+                        color="text.secondary"
+                        tabIndex={0}
+                    >
                         {exam.subject}
                     </Typography>
                 }
@@ -59,39 +81,27 @@ export default async function ExamInfoCard() {
                         gap: 2,
                     }}
                 >
-                    <Box flex="1" minWidth={120}>
-                        <Typography variant="subtitle2" color="text.secondary">
-                            {t("Date")}
-                        </Typography>
-                        <Typography variant="h6">
-                            {new Date(exam.dateTimeISO).toLocaleString()}
-                        </Typography>
-                    </Box>
-
-                    <Box flex="1" minWidth={120}>
-                        <Typography variant="subtitle2" color="text.secondary">
-                            {t("Students")}
-                        </Typography>
-                        <Typography variant="h6">
-                            {exam.totalStudents}
-                        </Typography>
-                    </Box>
-
-                    <Box flex="1" minWidth={120}>
-                        <Typography variant="subtitle2" color="text.secondary">
-                            {t("Questions")}
-                        </Typography>
-                        <Typography variant="h6">{TOTAL_QUESTIONS}</Typography>
-                    </Box>
-
-                    <Box flex="1" minWidth={120}>
-                        <Typography variant="subtitle2" color="text.secondary">
-                            {t("MarksPerQuestion")}
-                        </Typography>
-                        <Typography variant="h6">
-                            {MARKS_PER_QUESTION}
-                        </Typography>
-                    </Box>
+                    {stats.map((stat, i) => (
+                        <Box
+                            key={i}
+                            flex="1"
+                            minWidth={120}
+                            role="group"
+                            aria-label={stat.label}
+                        >
+                            <Typography
+                                variant="subtitle2"
+                                color="text.secondary"
+                                gutterBottom
+                                tabIndex={0}
+                            >
+                                {stat.label}
+                            </Typography>
+                            <Typography variant="h6" tabIndex={0}>
+                                {stat.value}
+                            </Typography>
+                        </Box>
+                    ))}
                 </Box>
             </CardContent>
         </Card>

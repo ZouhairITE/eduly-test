@@ -5,19 +5,17 @@ import { useMemo } from "react";
 import { useTranslation } from "@/src/shared-fe/hooks/use-translation";
 import { StudentDTO } from "@/src/types/student";
 import CloseIcon from "@mui/icons-material/Close";
-import {
-    Avatar,
-    Box,
-    Dialog,
-    DialogContent,
-    DialogTitle,
-    Divider,
-    Grid,
-    IconButton,
-    Paper,
-    Typography,
-    useTheme,
-} from "@mui/material";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import Divider from "@mui/material/Divider";
+import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
+import Paper from "@mui/material/Paper";
+import { useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
 
 interface StudentDetailsModalProps {
     open: boolean;
@@ -62,7 +60,6 @@ export default function StudentDetailsModal({
             disableScrollLock
             aria-labelledby="student-details-title"
         >
-            {/* Header */}
             <DialogTitle
                 id="student-details-title"
                 sx={{

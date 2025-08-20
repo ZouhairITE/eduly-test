@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useState } from "react";
 
 import { StudentDTO } from "@/src/types/student";
 import TableCell from "@mui/material/TableCell";
@@ -10,12 +9,25 @@ import Typography from "@mui/material/Typography";
 
 import ProgressCellRenderer from "./progress-cell-renderer";
 import StatusCellRenderer from "./status-cell-renderer";
-import StudentDetailsModal from "./student-details-modal";
 
 const MotionTableRow = motion.create(TableRow);
 
-export default function TableRowRenderer({ student }: { student: StudentDTO }) {
-    const [open, setOpen] = useState(false);
+interface TableRowRendererProps {
+    student: StudentDTO;
+    index: number;
+    selectedIndex: number | null;
+    setSelectedIndex: (idx: number) => void;
+    onOpenModal: () => void;
+}
+
+export default function TableRowRenderer({
+    student,
+    index,
+    selectedIndex,
+    setSelectedIndex,
+    onOpenModal,
+}: TableRowRendererProps) {
+    const isSelected = selectedIndex === index;
 
     return (
         <>
@@ -27,8 +39,22 @@ export default function TableRowRenderer({ student }: { student: StudentDTO }) {
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.3 }}
                 hover
-                onClick={() => setOpen(true)}
-                style={{ cursor: "pointer" }}
+                onClick={() => onOpenModal()}
+                onMouseEnter={() => setSelectedIndex(index)}
+                style={{
+                    cursor: "pointer",
+                    backgroundColor: isSelected
+                        ? "rgba(25, 118, 210, 0.08)"
+                        : undefined,
+                }}
+                role="row"
+                tabIndex={0}
+                aria-selected={isSelected}
+                onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                        onOpenModal();
+                    }
+                }}
             >
                 <TableCell align="justify">
                     <Typography fontWeight="500">{student.name}</Typography>
@@ -51,12 +77,6 @@ export default function TableRowRenderer({ student }: { student: StudentDTO }) {
                     <StatusCellRenderer status={student.status} />
                 </TableCell>
             </MotionTableRow>
-
-            <StudentDetailsModal
-                open={open}
-                onClose={() => setOpen(false)}
-                student={student}
-            />
         </>
     );
 }
